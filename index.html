@@ -3,14 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shakeds.art</title>
+    <title>Shakeds.art — Art by Shaked Grossman</title>
+    <meta
+        name="description"
+        content="Original artwork and digital art by Shaked Grossman."
+    >
+    <style>
+        /* =========================
+           GENERAL
+        ========================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f7f5f0;
+            color: #1d1d1d;
+            line-height: 1.6;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            width: 100%;
+            display: block;
+        }
+        /* =========================
+           HEADER
+        ========================= */
+        header {
+            width: 100%;
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #dedbd4;
+            background: #f7f5f0;
+        }
+        .logo {
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+        nav {
+            display: flex;
+            gap: 30px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        nav a:hover {
+            opacity: 0.55;
+        }
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 8%;
+        }
+        .hero-content {
+            max-width: 900px;
+        }
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: normal;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 32px;
+            border: 1px solid #1d1d1d;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: #1d1d1d;
+            color: white;
+        }
+        /* =========================
+           FEATURED ARTWORK
+        ========================= */
+        .featured {
+            padding: 100px 6%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: normal;
+            margin-bottom: 60px;
+        }
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .art-card {
+            background: white;
+            overflow: hidden;
+        }
+        .art-card img {
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .art-card:hover img {
+            transform: scale(1.03);
+        }
+        .art-info {
+            padding: 18px;
+        }
+        .art-info h3 {
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+        .art-info p {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #777;
+        }
+        /* =========================
+           ABOUT
+        ========================= */
+        .about {
+            padding: 120px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            background: #ebe7df;
+        }
+        .about-image {
+            background: #ddd;
+            aspect-ratio: 4 / 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+        .about-text h2 {
+            font-size: 48px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+        .about-text p {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        /* =========================
+           COMMISSIONS
+        ========================= */
+        .commission {
+            padding: 120px 10%;
+            text-align: center;
+        }
+        .commission h2 {
+            font-size: 52px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+        .commission p {
+            max-width: 600px;
+            margin: 0 auto 35px;
+            font-family: Arial, sans-serif;
+            color: #555;
+        }
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            padding: 50px 6%;
+            border-top: 1px solid #dedbd4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+        .social {
+            display: flex;
+            gap: 20px;
+        }
+        /* =========================
+           MOBILE
+        ========================= */
+        @media (max-width: 700px) {
+            header {
+                padding: 20px;
+            }
+            nav {
+                gap: 15px;
+                font-size: 11px;
+            }
+            .hero {
+                min-height: 70vh;
+                padding: 60px 25px;
+            }
+            .hero h1 {
+                font-size: 55px;
+            }
+            .featured {
+                padding: 70px 20px;
+            }
+            .section-title {
+                font-size: 35px;
+            }
+            .art-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+            .about {
+                padding: 80px 25px;
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+            .about-text h2 {
+                font-size: 40px;
+            }
+            .commission {
+                padding: 80px 25px;
+            }
+            .commission h2 {
+                font-size: 42px;
+            }
+            footer {
+                padding: 35px 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-    <h1>Art by Shaked Grossman</h1>
-
-    <p>Welcome to my art.</p>
-
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">
+            Shakeds.art
+        </a>
+        <nav>
+            <a href="#art">Art</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Art by<br>
+                Shaked Grossman
+            </h1>
+            <p>
+                Original paintings and digital artwork exploring
+                emotion, humanity and the world around us.
+            </p>
+            <a href="#art" class="button">
+                Explore Artwork
+            </a>
+        </div>
+    </section>
+    <!-- FEATURED ART -->
+    <section class="featured" id="art">
+        <h2 class="section-title">
+            Featured Artwork
+        </h2>
+        <div class="art-grid">
+            <a href="#" class="art-card">
+                <img
+                    src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1000&q=80"
+                    alt="Artwork"
+                >
+                <div class="art-info">
+                    <h3>
+                        Artwork Title
+                    </h3>
+                    <p>
+                        Original artwork · 2026
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="art-card">
+                <img
+                    src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1000&q=80"
+                    alt="Artwork"
+                >
+                <div class="art-info">
+                    <h3>
+                        Artwork Title
+                    </h3>
+                    <p>
+                        Digital artwork · 2026
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="art-card">
+                <img
+                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1000&q=80"
+                    alt="Artwork"
+                >
+                <div class="art-info">
+                    <h3>
+                        Artwork Title
+                    </h3>
+                    <p>
+                        Original artwork · 2026
+                    </p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-image">
+            Artist photo
+        </div>
+        <div class="about-text">
+            <h2>
+                About the Artist
+            </h2>
+            <p>
+                I am Shaked Grossman, a multidisciplinary artist
+                working across traditional and digital mediums.
+            </p>
+            <p>
+                My work explores the relationship between people,
+                nature, emotion and the world we create around us.
+            </p>
+            <a href="#" class="button">
+                More About Me
+            </a>
+        </div>
+    </section>
+    <!-- COMMISSIONS -->
+    <section class="commission" id="contact">
+        <h2>
+            Looking for something personal?
+        </h2>
+        <p>
+            I create custom artwork and digital portraits
+            tailored to the person, story or idea behind them.
+        </p>
+        <a href="#" class="button">
+            Commission an Artwork
+        </a>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            © 2026 Shakeds.art
+        </div>
+        <div class="social">
+            <a href="#">
+                Instagram
+            </a>
+            <a href="#">
+                Email
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
