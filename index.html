@@ -3,386 +3,952 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Shakeds.art — Art by Shaked Grossman</title>
+
     <meta
         name="description"
-        content="Original artwork and digital art by Shaked Grossman."
+        content="Digital and traditional artwork by Shaked Grossman."
     >
+
     <style>
+
         /* =========================
-           GENERAL
+           RESET
         ========================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Georgia, "Times New Roman", serif;
             background: #f7f5f0;
             color: #1d1d1d;
-            line-height: 1.6;
+            line-height: 1.5;
         }
+
         a {
             color: inherit;
             text-decoration: none;
         }
-        img {
-            width: 100%;
-            display: block;
+
+        button {
+            font: inherit;
         }
+
+
         /* =========================
            HEADER
         ========================= */
+
         header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
             width: 100%;
-            padding: 25px 6%;
+            padding: 22px 5%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            background: rgba(247, 245, 240, 0.94);
+            backdrop-filter: blur(10px);
+
             border-bottom: 1px solid #dedbd4;
-            background: #f7f5f0;
         }
+
         .logo {
-            font-size: 25px;
+            font-size: 24px;
             letter-spacing: 1px;
         }
+
         nav {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 28px;
+
             font-family: Arial, sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 1px;
         }
+
         nav a:hover {
-            opacity: 0.55;
+            opacity: 0.5;
         }
+
+        .language-switch {
+            border: none;
+            background: none;
+            cursor: pointer;
+
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .language-switch:hover {
+            opacity: 0.5;
+        }
+
+
         /* =========================
            HERO
         ========================= */
+
         .hero {
-            min-height: 80vh;
-            display: flex;
+            min-height: calc(100vh - 75px);
+
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 8%;
+
+            padding: 45px 5%;
+            gap: 6%;
         }
-        .hero-content {
-            max-width: 900px;
+
+        .hero-image {
+            height: 75vh;
+            min-height: 500px;
+
+            background-image:
+                url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
         }
-        .hero h1 {
-            font-size: clamp(48px, 8vw, 100px);
+
+        .hero-text {
+            padding: 20px 0;
+        }
+
+        .hero-text .small-title {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+            color: #777;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(50px, 6vw, 85px);
+            line-height: 0.98;
             font-weight: normal;
-            line-height: 1;
+
             margin-bottom: 30px;
         }
-        .hero p {
-            max-width: 600px;
-            margin: 0 auto 40px;
+
+        .hero-text p {
+            max-width: 430px;
+
             font-family: Arial, sans-serif;
-            font-size: 17px;
-            color: #555;
+            font-size: 16px;
+
+            color: #5f5f5f;
+
+            margin-bottom: 35px;
         }
+
         .button {
             display: inline-block;
-            padding: 15px 32px;
+
+            padding: 14px 30px;
+
             border: 1px solid #1d1d1d;
+
             font-family: Arial, sans-serif;
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
             transition: 0.3s;
         }
+
         .button:hover {
             background: #1d1d1d;
             color: white;
         }
+
+
         /* =========================
-           FEATURED ARTWORK
+           ART SECTION
         ========================= */
-        .featured {
-            padding: 100px 6%;
+
+        .art-section {
+            padding: 120px 5%;
         }
-        .section-title {
-            text-align: center;
-            font-size: 42px;
+
+        .section-heading {
+            margin-bottom: 65px;
+        }
+
+        .section-label {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(42px, 6vw, 70px);
             font-weight: normal;
-            margin-bottom: 60px;
         }
-        .art-grid {
+
+
+        /* =========================
+           CATEGORY GRID
+        ========================= */
+
+        .category-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 28px;
         }
-        .art-card {
-            background: white;
-            overflow: hidden;
+
+        .category-card {
+            display: block;
         }
-        .art-card img {
+
+        .category-image {
+            position: relative;
+
             aspect-ratio: 4 / 5;
+
+            overflow: hidden;
+
+            background: #ddd;
+
+            margin-bottom: 18px;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+
             object-fit: cover;
-            transition: transform 0.5s;
+
+            transition: transform 0.7s ease;
         }
-        .art-card:hover img {
-            transform: scale(1.03);
+
+        .category-card:hover img {
+            transform: scale(1.04);
         }
-        .art-info {
-            padding: 18px;
-        }
-        .art-info h3 {
-            font-size: 20px;
+
+        .category-name {
+            font-size: 25px;
             font-weight: normal;
+
             margin-bottom: 5px;
         }
-        .art-info p {
+
+        .category-description {
             font-family: Arial, sans-serif;
             font-size: 13px;
             color: #777;
         }
+
+
         /* =========================
            ABOUT
         ========================= */
+
         .about {
             padding: 120px 10%;
+
             display: grid;
             grid-template-columns: 1fr 1fr;
+
             gap: 80px;
             align-items: center;
+
             background: #ebe7df;
         }
+
         .about-image {
-            background: #ddd;
             aspect-ratio: 4 / 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-family: Arial, sans-serif;
-            font-size: 13px;
+
+            background:
+                url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85")
+                center / cover;
         }
+
         .about-text h2 {
-            font-size: 48px;
+            font-size: clamp(42px, 5vw, 65px);
             font-weight: normal;
+
             margin-bottom: 25px;
         }
+
         .about-text p {
+            max-width: 520px;
+
             font-family: Arial, sans-serif;
             font-size: 16px;
+
             color: #555;
-            margin-bottom: 25px;
+
+            margin-bottom: 20px;
         }
+
+
         /* =========================
            COMMISSIONS
         ========================= */
+
         .commission {
-            padding: 120px 10%;
+            padding: 130px 10%;
+
             text-align: center;
         }
+
         .commission h2 {
-            font-size: 52px;
+            max-width: 850px;
+            margin: 0 auto 25px;
+
+            font-size: clamp(42px, 6vw, 70px);
             font-weight: normal;
-            margin-bottom: 20px;
         }
+
         .commission p {
-            max-width: 600px;
+            max-width: 580px;
+
             margin: 0 auto 35px;
+
             font-family: Arial, sans-serif;
-            color: #555;
+            color: #666;
         }
+
+
         /* =========================
            FOOTER
         ========================= */
+
         footer {
-            padding: 50px 6%;
+            padding: 45px 5%;
+
             border-top: 1px solid #dedbd4;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             font-family: Arial, sans-serif;
-            font-size: 13px;
+            font-size: 12px;
         }
+
         .social {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
+
+
+        /* =========================
+           HEBREW
+        ========================= */
+
+        body.rtl {
+            direction: rtl;
+        }
+
+        body.rtl nav {
+            direction: rtl;
+        }
+
+        body.rtl .hero-text {
+            text-align: right;
+        }
+
+        body.rtl .hero-text p {
+            margin-left: auto;
+        }
+
+
         /* =========================
            MOBILE
         ========================= */
-        @media (max-width: 700px) {
+
+        @media (max-width: 800px) {
+
             header {
-                padding: 20px;
+                padding: 18px 20px;
             }
+
             nav {
-                gap: 15px;
-                font-size: 11px;
+                gap: 13px;
+                font-size: 10px;
             }
+
+            .logo {
+                font-size: 19px;
+            }
+
             .hero {
-                min-height: 70vh;
-                padding: 60px 25px;
-            }
-            .hero h1 {
-                font-size: 55px;
-            }
-            .featured {
-                padding: 70px 20px;
-            }
-            .section-title {
-                font-size: 35px;
-            }
-            .art-grid {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
+
+                padding: 25px 20px 70px;
+
                 gap: 35px;
             }
-            .about {
-                padding: 80px 25px;
+
+            .hero-image {
+                width: 100%;
+                height: 65vh;
+                min-height: 400px;
+
+                order: 1;
+            }
+
+            .hero-text {
+                order: 2;
+
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .art-section {
+                padding: 80px 20px;
+            }
+
+            .category-grid {
                 grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+
+                padding: 80px 25px;
+
                 gap: 45px;
             }
-            .about-text h2 {
-                font-size: 40px;
+
+            .about-text {
+                text-align: center;
             }
+
+            .about-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .commission {
-                padding: 80px 25px;
+                padding: 90px 25px;
             }
-            .commission h2 {
-                font-size: 42px;
-            }
+
             footer {
-                padding: 35px 20px;
                 flex-direction: column;
                 gap: 20px;
             }
+
         }
+
     </style>
 </head>
+
+
 <body>
-    <!-- HEADER -->
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header>
+
         <a href="#" class="logo">
             Shakeds.art
         </a>
+
         <nav>
-            <a href="#art">Art</a>
-            <a href="#shop">Shop</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+
+            <a href="#digital" data-en="Digital" data-he="דיגיטלי">
+                Digital
+            </a>
+
+            <a href="#traditional" data-en="Traditional" data-he="מסורתי">
+                Traditional
+            </a>
+
+            <a href="#about" data-en="About" data-he="אודות">
+                About
+            </a>
+
+            <a href="#contact" data-en="Contact" data-he="יצירת קשר">
+                Contact
+            </a>
+
+            <button
+                class="language-switch"
+                onclick="toggleLanguage()"
+                id="languageButton"
+            >
+                עברית
+            </button>
+
         </nav>
+
     </header>
-    <!-- HERO -->
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
-        <div class="hero-content">
-            <h1>
-                Art by<br>
-                Shaked Grossman
+
+        <div class="hero-image"></div>
+
+        <div class="hero-text">
+
+            <div
+                class="small-title"
+                data-en="Art by Shaked Grossman"
+                data-he="אמנות מאת שקד גרוסמן"
+            >
+                Art by Shaked Grossman
+            </div>
+
+            <h1
+                data-en="Find a piece that speaks to you."
+                data-he="מצאו יצירה שמדברת אליכם."
+            >
+                Find a piece that speaks to you.
             </h1>
-            <p>
-                Original paintings and digital artwork exploring
-                emotion, humanity and the world around us.
+
+            <p
+                data-en="Digital and traditional artwork, created with care and intention."
+                data-he="יצירות אמנות דיגיטליות ומסורתיות, שנוצרו מתוך מחשבה ורגש."
+            >
+                Digital and traditional artwork, created with care and intention.
             </p>
-            <a href="#art" class="button">
+
+            <a
+                href="#digital"
+                class="button"
+                data-en="Explore Artwork"
+                data-he="לגלריה"
+            >
                 Explore Artwork
             </a>
+
         </div>
+
     </section>
-    <!-- FEATURED ART -->
-    <section class="featured" id="art">
-        <h2 class="section-title">
-            Featured Artwork
-        </h2>
-        <div class="art-grid">
-            <a href="#" class="art-card">
-                <img
-                    src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1000&q=80"
-                    alt="Artwork"
-                >
-                <div class="art-info">
-                    <h3>
-                        Artwork Title
-                    </h3>
-                    <p>
-                        Original artwork · 2026
-                    </p>
-                </div>
-            </a>
-            <a href="#" class="art-card">
-                <img
-                    src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1000&q=80"
-                    alt="Artwork"
-                >
-                <div class="art-info">
-                    <h3>
-                        Artwork Title
-                    </h3>
-                    <p>
-                        Digital artwork · 2026
-                    </p>
-                </div>
-            </a>
-            <a href="#" class="art-card">
-                <img
-                    src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1000&q=80"
-                    alt="Artwork"
-                >
-                <div class="art-info">
-                    <h3>
-                        Artwork Title
-                    </h3>
-                    <p>
-                        Original artwork · 2026
-                    </p>
-                </div>
-            </a>
-        </div>
-    </section>
-    <!-- ABOUT -->
-    <section class="about" id="about">
-        <div class="about-image">
-            Artist photo
-        </div>
-        <div class="about-text">
-            <h2>
-                About the Artist
+
+
+    <!-- =========================
+         DIGITAL ART
+    ========================= -->
+
+    <section class="art-section" id="digital">
+
+        <div class="section-heading">
+
+            <div
+                class="section-label"
+                data-en="01 — Digital Art"
+                data-he="01 — אמנות דיגיטלית"
+            >
+                01 — Digital Art
+            </div>
+
+            <h2
+                data-en="Digital"
+                data-he="דיגיטלי"
+            >
+                Digital
             </h2>
-            <p>
-                I am Shaked Grossman, a multidisciplinary artist
-                working across traditional and digital mediums.
-            </p>
-            <p>
-                My work explores the relationship between people,
-                nature, emotion and the world we create around us.
-            </p>
-            <a href="#" class="button">
-                More About Me
-            </a>
+
         </div>
+
+
+        <div class="category-grid">
+
+
+            <a href="#" class="category-card">
+
+                <div class="category-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1000&q=85"
+                        alt="Digital Portraits"
+                    >
+
+                </div>
+
+                <div
+                    class="category-name"
+                    data-en="Digital Portraits"
+                    data-he="פורטרטים דיגיטליים"
+                >
+                    Digital Portraits
+                </div>
+
+                <div
+                    class="category-description"
+                    data-en="Custom portraits created from your photographs."
+                    data-he="פורטרטים אישיים שנוצרים מתוך התמונות שלכם."
+                >
+                    Custom portraits created from your photographs.
+                </div>
+
+            </a>
+
+
+            <a href="#" class="category-card">
+
+                <div class="category-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1000&q=85"
+                        alt="Custom Prints"
+                    >
+
+                </div>
+
+                <div
+                    class="category-name"
+                    data-en="Custom Designed Prints"
+                    data-he="הדפסים בעיצוב אישי"
+                >
+                    Custom Designed Prints
+                </div>
+
+                <div
+                    class="category-description"
+                    data-en="Personal artwork designed specifically for you."
+                    data-he="יצירות בעיצוב אישי שנוצרו במיוחד עבורכם."
+                >
+                    Personal artwork designed specifically for you.
+                </div>
+
+            </a>
+
+
+            <a href="#" class="category-card">
+
+                <div class="category-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1000&q=85"
+                        alt="Fine Line"
+                    >
+
+                </div>
+
+                <div
+                    class="category-name"
+                    data-en="Fine Line"
+                    data-he="פיין ליין"
+                >
+                    Fine Line
+                </div>
+
+                <div
+                    class="category-description"
+                    data-en="Minimal, delicate line work made to order."
+                    data-he="עבודות קו עדינות ומינימליסטיות בהזמנה אישית."
+                >
+                    Minimal, delicate line work made to order.
+                </div>
+
+            </a>
+
+
+        </div>
+
     </section>
-    <!-- COMMISSIONS -->
+
+
+    <!-- =========================
+         TRADITIONAL ART
+    ========================= -->
+
+    <section class="art-section" id="traditional">
+
+        <div class="section-heading">
+
+            <div
+                class="section-label"
+                data-en="02 — Traditional Art"
+                data-he="02 — אמנות מסורתית"
+            >
+                02 — Traditional Art
+            </div>
+
+            <h2
+                data-en="Traditional"
+                data-he="מסורתי"
+            >
+                Traditional
+            </h2>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <a href="#" class="category-card">
+
+                <div class="category-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1000&q=85"
+                        alt="Pencil Portraits"
+                    >
+
+                </div>
+
+                <div
+                    class="category-name"
+                    data-en="Pencil Portraits"
+                    data-he="פורטרטים בעיפרון"
+                >
+                    Pencil Portraits
+                </div>
+
+                <div
+                    class="category-description"
+                    data-en="Hand-drawn portraits created from your photographs."
+                    data-he="פורטרטים מצוירים ביד על בסיס התמונות שלכם."
+                >
+                    Hand-drawn portraits created from your photographs.
+                </div>
+
+            </a>
+
+
+            <a href="#" class="category-card">
+
+                <div class="category-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1000&q=85"
+                        alt="Watercolor"
+                    >
+
+                </div>
+
+                <div
+                    class="category-name"
+                    data-en="Watercolor"
+                    data-he="צבעי מים"
+                >
+                    Watercolor
+                </div>
+
+                <div
+                    class="category-description"
+                    data-en="Original watercolor paintings."
+                    data-he="ציורים מקוריים בצבעי מים."
+                >
+                    Original watercolor paintings.
+                </div>
+
+            </a>
+
+
+            <a href="#" class="category-card">
+
+                <div class="category-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=1000&q=85"
+                        alt="Acrylic"
+                    >
+
+                </div>
+
+                <div
+                    class="category-name"
+                    data-en="Acrylic"
+                    data-he="אקריליק"
+                >
+                    Acrylic
+                </div>
+
+                <div
+                    class="category-description"
+                    data-en="Original acrylic paintings."
+                    data-he="ציורים מקוריים בצבעי אקריליק."
+                >
+                    Original acrylic paintings.
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-image"></div>
+
+        <div class="about-text">
+
+            <h2
+                data-en="About Shaked"
+                data-he="קצת על שקד"
+            >
+                About Shaked
+            </h2>
+
+            <p
+                data-en="I am Shaked Grossman, a multidisciplinary artist working across digital and traditional mediums."
+                data-he="אני שקד גרוסמן, אמנית רב־תחומית שעובדת במגוון מדיומים דיגיטליים ומסורתיים."
+            >
+                I am Shaked Grossman, a multidisciplinary artist working across digital and traditional mediums.
+            </p>
+
+            <p
+                data-en="My work explores people, emotion, nature and the stories we carry with us."
+                data-he="העבודות שלי עוסקות באנשים, רגש, טבע והסיפורים שאנחנו נושאים איתנו."
+            >
+                My work explores people, emotion, nature and the stories we carry with us.
+            </p>
+
+            <a
+                href="#contact"
+                class="button"
+                data-en="Get in Touch"
+                data-he="צרו קשר"
+            >
+                Get in Touch
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMMISSIONS
+    ========================= -->
+
     <section class="commission" id="contact">
-        <h2>
+
+        <h2
+            data-en="Looking for something personal?"
+            data-he="מחפשים משהו אישי?"
+        >
             Looking for something personal?
         </h2>
-        <p>
-            I create custom artwork and digital portraits
-            tailored to the person, story or idea behind them.
+
+        <p
+            data-en="Commission a custom artwork created especially for you."
+            data-he="הזמינו יצירה אישית שנוצרה במיוחד עבורכם."
+        >
+            Commission a custom artwork created especially for you.
         </p>
-        <a href="#" class="button">
-            Commission an Artwork
+
+        <a
+            href="mailto:shakedgrossman@gmail.com"
+            class="button"
+            data-en="Start a Commission"
+            data-he="הזמנת יצירה"
+        >
+            Start a Commission
         </a>
+
     </section>
-    <!-- FOOTER -->
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
+
         <div>
             © 2026 Shakeds.art
         </div>
+
         <div class="social">
-            <a href="#">
+
+            <a
+                href="https://www.instagram.com/shakeds._.art/"
+                target="_blank"
+            >
                 Instagram
             </a>
-            <a href="#">
+
+            <a href="mailto:shakedgrossman@gmail.com">
                 Email
             </a>
+
         </div>
+
     </footer>
+
+
+    <!-- =========================
+         LANGUAGE SCRIPT
+    ========================= -->
+
+    <script>
+
+        let currentLanguage = "en";
+
+        function toggleLanguage() {
+
+            currentLanguage =
+                currentLanguage === "en"
+                    ? "he"
+                    : "en";
+
+            document.documentElement.lang = currentLanguage;
+
+            document.body.classList.toggle(
+                "rtl",
+                currentLanguage === "he"
+            );
+
+            const elements =
+                document.querySelectorAll("[data-en]");
+
+            elements.forEach(element => {
+
+                element.textContent =
+                    element.dataset[currentLanguage];
+
+            });
+
+            document.getElementById("languageButton").textContent =
+                currentLanguage === "en"
+                    ? "עברית"
+                    : "English";
+
+        }
+
+    </script>
+
+
 </body>
 </html>
