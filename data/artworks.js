@@ -14,7 +14,7 @@ window.artworks = [
             en: "Custom portraits created from your photographs.",
             he: "פורטרטים בהזמנה אישית שנוצרים מהתמונות שלכם."
         },
-        image: "images/digital/digital-portrait.jpg",
+        image: "images/digital/Hani.jpg",
         price: null,
         available: true
     },
