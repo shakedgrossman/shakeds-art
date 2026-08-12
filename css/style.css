@@ -17,6 +17,10 @@ body {
     background: #f7f5f0;
     color: #1d1d1d;
     line-height: 1.5;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 a {
@@ -49,6 +53,10 @@ header {
     backdrop-filter: blur(10px);
 
     border-bottom: 1px solid #dedbd4;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .logo {
@@ -78,6 +86,8 @@ nav a:hover {
     font-family: Arial, sans-serif;
     font-size: 12px;
     letter-spacing: 1px;
+
+    color: inherit;
 }
 
 .language-switch:hover {
@@ -164,7 +174,10 @@ nav a:hover {
     letter-spacing: 1.5px;
     text-transform: uppercase;
 
-    transition: 0.3s;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .button:hover {
@@ -219,7 +232,8 @@ nav a:hover {
 .category-image {
     position: relative;
 
-    aspect-ratio: 4 / 5;
+    /* Ratio based on 1865 × 2908 */
+    aspect-ratio: 1865 / 2908;
 
     overflow: hidden;
 
@@ -232,7 +246,14 @@ nav a:hover {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    /*
+       Show the entire artwork without cropping.
+       This prevents important parts of the drawings
+       from being cut off.
+    */
+    object-fit: contain;
+
+    display: block;
 
     transition: transform 0.7s ease;
 }
@@ -270,14 +291,29 @@ nav a:hover {
     align-items: center;
 
     background: #ebe7df;
+
+    transition: background-color 0.3s ease;
 }
 
+
+/*
+   ABOUT IMAGE
+
+   Image:
+   Images/about/Sitting.jpg
+*/
+
 .about-image {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1865 / 2908;
+
+    overflow: hidden;
 
     background:
-        url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85")
-        center / cover;
+        url("Images/about/Sitting.jpg")
+        center / contain
+        no-repeat;
+
+    background-color: #ddd;
 }
 
 .about-text h2 {
@@ -391,6 +427,63 @@ body.rtl .commission h2 {
 
 
 /* =========================
+   DARK MODE
+========================= */
+
+body.dark {
+    background: #171715;
+    color: #eeeae2;
+}
+
+body.dark header {
+    background: rgba(23, 23, 21, 0.94);
+    border-bottom-color: #383832;
+}
+
+body.dark .hero-text .small-title,
+body.dark .section-label,
+body.dark .category-description {
+    color: #aaa69e;
+}
+
+body.dark .hero-text p,
+body.dark .about-text p,
+body.dark .commission p {
+    color: #b8b4ac;
+}
+
+body.dark .button {
+    border-color: #eeeae2;
+    color: #eeeae2;
+}
+
+body.dark .button:hover {
+    background: #eeeae2;
+    color: #171715;
+}
+
+body.dark .category-image {
+    background: #292925;
+}
+
+body.dark .about {
+    background: #242420;
+}
+
+body.dark .about-image {
+    background-color: #292925;
+}
+
+body.dark footer {
+    border-top-color: #383832;
+}
+
+body.dark .hero-artwork {
+    background: #292925;
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -427,16 +520,28 @@ body.rtl .commission h2 {
         padding: 80px 20px;
     }
 
-    /* 3 categories in one row on mobile */
+
+    /* =========================
+       MOBILE CATEGORY GRID
+    ========================= */
+
     .category-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
 
-    /* Square category images on mobile */
     .category-image {
-        aspect-ratio: 1 / 1;
+        /*
+           Same tall ratio as the original artwork:
+           1865 × 2908
+        */
+        aspect-ratio: 1865 / 2908;
+
         margin-bottom: 10px;
+    }
+
+    .category-image img {
+        object-fit: contain;
     }
 
     .category-name {
@@ -450,12 +555,23 @@ body.rtl .commission h2 {
         line-height: 1.3;
     }
 
+
+    /* =========================
+       MOBILE ABOUT
+    ========================= */
+
     .about {
         grid-template-columns: 1fr;
 
         padding: 80px 25px;
 
         gap: 45px;
+    }
+
+    .about-image {
+        aspect-ratio: 1865 / 2908;
+
+        background-size: contain;
     }
 
     .about-text {
@@ -467,9 +583,19 @@ body.rtl .commission h2 {
         margin-right: auto;
     }
 
+
+    /* =========================
+       MOBILE COMMISSION
+    ========================= */
+
     .commission {
         padding: 90px 25px;
     }
+
+
+    /* =========================
+       MOBILE FOOTER
+    ========================= */
 
     footer {
         flex-direction: column;
