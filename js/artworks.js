@@ -14,7 +14,7 @@ window.artworks = [
             en: "Custom portraits created from your photographs.",
             he: "פורטרטים בהזמנה אישית שנוצרים מהתמונות שלכם."
         },
-        image: "images/digital/Hani.jpg",
+        image: "images/digital/portraits/Hani.jpg",
         price: null,
         available: true
     },
@@ -46,7 +46,7 @@ window.artworks = [
             en: "Customized elegant fine-line work.",
             he: "עבודות פיין ליין מינימליסטיות בהזמנה אישית."
         },
-        image: "images/digital/fine-line.jpg",
+        image: "images/digital/fineline/Dancer.jpg",
         price: null,
         available: true
     },
@@ -65,7 +65,7 @@ window.artworks = [
             en: "Hand-drawn portraits created from your photographs.",
             he: "פורטרטים אישיים על בסיס התמונות שלכם."
         },
-        image: "images/traditional/pencil-portrait.jpg",
+        image: "images/traditional/pencil/Ayala.jpg",
         price: null,
         available: true
     },
@@ -81,7 +81,7 @@ window.artworks = [
             en: "Original watercolor paintings.",
             he: "ציורים מקוריים בצבעי מים."
         },
-        image: "images/traditional/watercolor.jpg",
+        image: "images/traditional/watercolour/Balcony.jpg",
         price: null,
         available: true
     },
@@ -97,7 +97,7 @@ window.artworks = [
             en: "Original acrylic paintings.",
             he: "ציורים מקוריים בצבעי אקריליק."
         },
-        image: "images/traditional/acrylic.jpg",
+        image: "images/traditional/acrylic/Guitat.jpg",
         price: null,
         available: true
     }
