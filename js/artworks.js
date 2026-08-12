@@ -30,7 +30,7 @@ window.artworks = [
             en: "Personal artwork designed specifically for you.",
             he: "יצירות בעיצוב אישי שנוצרו במיוחד עבורכם."
         },
-        image: "images/digital/custom-print.jpg",
+        image: "images/digital/prints/Bestdancer.jpg",
         price: null,
         available: true
     },
@@ -97,7 +97,7 @@ window.artworks = [
             en: "Original acrylic paintings.",
             he: "ציורים מקוריים בצבעי אקריליק."
         },
-        image: "images/traditional/acrylic/Guitat.jpg",
+        image: "images/traditional/acrylic/Guitar.jpg",
         price: null,
         available: true
     }
